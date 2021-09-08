@@ -1,46 +1,21 @@
-<template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+<template lang="pug">
+  v-app
+    v-app-bar(app color='#6441a5' dark)
+      .d-flex.align-center
+        v-img.shrink.mt-1(alt='LifeBit Logo' contain src='https://gitlab.com/uploads/-/system/project/avatar/10635262/lifebit.png' transition='scale-transition' width='70')
+          v-img.shrink.mt-1.hidden-sm-and-down(alt='LifeBit Name' contain min-width='70' src='https://gitlab.com/uploads/-/system/project/avatar/10635262/lifebit.png' width='70').
+      v-app-bar-title
+        router-link(to="/" style="cursor: pointer" tag="span")
+          | {{ appTitle }}
+      v-spacer
+      v-app-bar-items(class="hidden-xs-only")
+      v-btn(flat v-for='item in menuItems' :key='item.title' :to='item.path')
+        v-icon(left color='#cccccc') {{ item.icon }}
+        | {{ item.title }}
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+    v-main
+      router-view
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <router-view/>
-    </v-main>
-  </v-app>
 </template>
 
 <script lang="ts">
@@ -48,9 +23,21 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'App',
-
-  data: () => ({
-    //
-  }),
+  data(){
+    return {
+      appTitle: 'LifeBit',
+      sidebar: false,
+      menuItems: [
+        { title: 'Home', path: '/home', icon: 'fa-home'},
+        { title: 'Help', path: '/help', icon: 'fa-question-circle'},
+        { title: 'About', path: '/about', icon: 'fa-info-circle'}
+      ]
+    }
+  },
 });
 </script>
+
+<style lang="sass">
+  
+
+</style>

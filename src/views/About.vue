@@ -1,5 +1,11 @@
-<template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+<template lang="pug">
+    h1 this is an about page    
 </template>
+
+<script lang="ts">
+
+</script>
+
+<style lang="sass">
+
+</style>
